@@ -6,17 +6,14 @@
 // block.onmousedown = e => {
 //     x = e.screenX;
 //     y = e.screenY;
-//     console.log(x, y);
 // };
 
 // document.onmouseup = e => {
 //     _x = e.screenX;
 //     _y = e.screenY;
-//     console.log(_x, _y);
 
 //     diff_x = _x - x;
 //     diff_y = _y - y;
-//     console.log(diff_x, diff_y);
 
 //     block.style.left = !block.style.left ? `${diff_x}px` : `${parseInt(block.style.left) + diff_x}px`;
 //     block.style.top = !block.style.top ? `${diff_y}px` : `${parseInt(block.style.top) + diff_y}px`;
@@ -24,73 +21,65 @@
 // };
 // !!!!!!!!!!!!!!!!!!!!!!!!
 
+// const block = document.querySelector(".block");
+
+// let x, y;
+// let isBlockActive = false;
+
+// block.onmousedown = e => {
+//     x = e.screenX;
+//     y = e.screenY;
+
+//     isBlockActive = true;
+// };
+
+// block.onmousemove = e => {
+//     if (isBlockActive) {
+//         let _x = e.screenX;
+//         let _y = e.screenY;
+
+//         diff_x = _x - x;
+//         diff_y = _y - y;
+
+//         block.style.left = !block.style.left ? `${diff_x}px` : `${parseInt(block.style.left) + diff_x}px`;
+//         block.style.top = !block.style.top ? `${diff_y}px` : `${parseInt(block.style.top) + diff_y}px`;
+
+//         x = _x;
+//         y = _y;
+//     }
+// }
+
+// block.onmouseup = () => isBlockActive = false;
+// !!!!!!!!!!!!!!!!!!!!
+
+// ! keypress, keydown, keyup
 
 const block = document.querySelector(".block");
 
-let x, y;
-let isBlockActive = false;
+// document.addEventListener("keypress", e => console.log("keypress", e.keyCode));
+// document.addEventListener("keydown", e => console.log("keydown", e.keyCode));
+// document.addEventListener("keyup", e => console.log("keyup", e.keyCode));
 
-block.onmousedown = e => {
-    x = e.screenX;
-    y = e.screenY;
+const STEP = 10;
 
-    isBlockActive = true;
-};
+// ! способ 1
+// document.addEventListener("keydown", e => {
+//     if (e.keyCode === 37) block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) - STEP}px`;
+//     if (e.keyCode === 38) block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) - STEP}px`;
+//     if (e.keyCode === 39) block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) + STEP}px`;
+//     if (e.keyCode === 40) block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) + STEP}px`;
+// })
 
-block.onmousemove = e => {
-    if (isBlockActive) {
-        let _x = e.screenX;
-        let _y = e.screenY;
+// ! способ 2
 
-        diff_x = _x - x;
-        diff_y = _y - y;
-
-        block.style.left = !block.style.left ? `${diff_x}px` : `${parseInt(block.style.left) + diff_x}px`;
-        block.style.top = !block.style.top ? `${diff_y}px` : `${parseInt(block.style.top) + diff_y}px`;
-
-        x = _x;
-        y = _y;
-    }
+const operations = {
+    37: block => block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) - STEP}px`,
+    38: block => block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) - STEP}px`,
+    39: block => block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) + STEP}px`,
+    40: block => block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) + STEP}px`,
 }
 
-block.onmouseup = () => isBlockActive = false;
-// !!!!!!!!!!!!!!!!!!!!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// keypress, keydown, keyup
-// const block = document.querySelector(".block");
-
-// // document.addEventListener("keypress", e => console.log("keypress", e.keyCode));
-// // document.addEventListener("keydown", e => console.log("keydown", e.keyCode));
-// // document.addEventListener("keyup", e => console.log("keyup", e.keyCode));
-
-// const STEP = 10;
-
-// const operations = {
-//     37: block => block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) - STEP}px`,
-//     38: block => block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) - STEP}px`,
-//     39: block => block.style.left = !block.style.left ? `${STEP}px` : `${parseInt(block.style.left) + STEP}px`,
-//     40: block => block.style.top = !block.style.top ? `${STEP}px` : `${parseInt(block.style.top) + STEP}px`,
-// }
-
-// document.addEventListener("keydown", e => operations[e.keyCode](block));
-
+document.addEventListener("keydown", e => operations[e.keyCode](block));
 
 
 // form, e.preventDefault();
