@@ -87,64 +87,64 @@ block.onmouseup = () => isBlockActive = false;
 
 // ! form, e.preventDefault()
 
-// const form = document.getElementById("form");
-// const button = document.getElementById("submit-form");
-// const firstName = document.getElementById("firstName");
-// const lastName = document.getElementById("lastName");
-// const age = document.getElementById("age");
+const form = document.getElementById("form");
+const button = document.getElementById("submit-form");
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+const age = document.getElementById("age");
 
-// const array = [false, false, false];
+const array = [false, false, false];
 
-// function validation() {
-//     console.log("validation");
-//     return array.every((item) => item);
-// }
+function validation() {
+    console.log("validation");
+    return array.every((item) => item);
+}
 
-// firstName.addEventListener("input", () => {
-//     if (firstName.value && firstName.value.length > 3) {
-//         array[0] = true
-//     } else {
-//         array[0] = false
-//         button.setAttribute("disabled", "disabled");
-//     }
+firstName.addEventListener("input", () => {
+    if (firstName.value && firstName.value.length > 3) {
+        array[0] = true
+    } else {
+        array[0] = false
+        button.setAttribute("disabled", "disabled");
+    }
 
-//     if (validation()) button.removeAttribute("disabled");
-// })
+    if (validation()) button.removeAttribute("disabled");
+})
 
-// lastName.addEventListener("input", () => {
-//     if (lastName.value && lastName.value.length > 3) {
-//         array[1] = true
-//     } else {
-//         array[1] = false
-//         button.setAttribute("disabled", "disabled");
-//     }
+lastName.addEventListener("input", () => {
+    if (lastName.value && lastName.value.length > 3) {
+        array[1] = true
+    } else {
+        array[1] = false
+        button.setAttribute("disabled", "disabled");
+    }
 
-//     if (validation()) button.removeAttribute("disabled");
-// })
+    if (validation()) button.removeAttribute("disabled");
+})
 
-// age.addEventListener("input", () => {
-//     if (age.value && age.value > 18) {
-//         array[2] = true
-//     } else {
-//         array[2] = false
-//         button.setAttribute("disabled", "disabled");
-//     }
+age.addEventListener("input", () => {
+    if (age.value && age.value > 18) {
+        array[2] = true
+    } else {
+        array[2] = false
+        button.setAttribute("disabled", "disabled");
+    }
 
-//     if (validation()) button.removeAttribute("disabled");
-// })
+    if (validation()) button.removeAttribute("disabled");
+})
 
-// form.addEventListener("click", e => {
-//     e.preventDefault();
-// })
+form.addEventListener("click", e => {
+    e.preventDefault();
+})
 
 
 
-// button.addEventListener("click", () => {
-//     const data = {
-//         first_name: firstName.value,
-//         last_name: lastName.value,
-//         age: age.value,
-//     }
+button.addEventListener("click", () => {
+    const data = {
+        first_name: firstName.value,
+        last_name: lastName.value,
+        age: age.value,
+    }
 
-//     console.log(`Data send success!`, data);
-// });
+    console.log(`Data send success!`, data);
+});
